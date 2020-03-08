@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            {{ userInfo.name }}님 환영합니다.
+            {{ userInfo.first_name }} {{ userInfo.last_name }}님 환영합니다.
         </h1>
     </div>
 </template>
