@@ -29,6 +29,8 @@
             @click="login({ email,password })">
               로그인
             </v-btn>
+            <v-btn @click="get">get test</v-btn>
+            <v-btn @click="post">post test</v-btn>
           </div>
         </v-card>
       </v-flex>
@@ -38,6 +40,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex"
+import axios from "axios"
 
 export default {
   data() {
@@ -54,6 +57,33 @@ export default {
   methods: {
     ...mapActions(["login"]),
     
+    get() {
+      axios
+        .get('https://reqres.in/api/users?page=2')
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+        .then(() => {
+          console.log("test");
+          // always executed
+        });
+    },
+
+    post() {
+      axios.post('https://reqres.in/api/register', {
+          "email": "eve.holt@reqres.in",
+          "password": "pistol"
+      })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    }
   }
 };
 </script>
